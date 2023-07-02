@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate Receive</title>
+    <link rel="icon" href="Image.png" type="image/x-icon">
+    <style>
+        .container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin-left: 100px;
+            margin-right: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            width: 200px;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            background-color: #88b5dd;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .text {
+            font-size: 24px;
+        }
+
+        .small-text {
+            font-size: 10px;
+        }
+
+        .sign-in-button {
+          padding: 10px 20px;
+          background-color: #337ab7;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+
+        .button:hover {
+          background-color: #23527c;
+        }
+
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 9999;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+          background-color: #fff;
+          margin: 10% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          max-width: 400px;
+        }
+
+        .close {
+          color: #888;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        .close:hover {
+          color: #000;
+        }
+    </style>
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            alert(`Latitude: ${latitude}. Longitude: ${longitude}.`);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="Logo.png" alt="Logo" height="80" width="80">
+
+        <div class="search-container">
+            <input maxlength="100" class="search-bar" type="text" id="search-input" placeholder="Search">
+            <button class="search-button" onclick="performSearch()">Search</button>
+        </div>
+        <button class="sign-in-button" onclick="openModal()">Sign in</button>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img src="Image.png" alt="DonRec Logo">
+            <h2>Popup content</h2>
+        </div>
+    </div>
+
+    <script>
+        getLocation();
+    </script>
+</body>
+</html>
